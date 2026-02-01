@@ -1,0 +1,54 @@
+# --- Git & Documentation ---
+.git
+.gitignore
+.github
+README.md
+LICENSE
+CONTRIBUTING.md
+
+# --- Python Build & Cache ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.pytest_cache
+.coverage
+htmlcov
+.tox
+.nox
+
+# --- Environments & Secrets (SANGAT PENTING!) ---
+# Kredensial jangan pernah masuk ke image, gunakan environment variables saat runtime
+.env
+.env.*
+env/
+venv/
+.venv
+virtualenv/
+
+# --- JavaScript / Node.js ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# --- Java & Build Tools ---
+target/
+build/
+.gradle/
+*.jar
+*.war
+
+# --- OS & IDE Files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Docker Specific ---
+docker-compose.yml
+docker-compose.override.yml
+Dockerfile
+.dockerignore

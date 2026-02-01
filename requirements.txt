@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+yfinance==1.1.0
+pandas
+lxml
+requests
+python-decouple
+selenium==4.5.0
+webdriver-manager
+pytest
+httpx
+html5lib
+python-multipart
+redis
+gunicorn
