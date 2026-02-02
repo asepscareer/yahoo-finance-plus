@@ -79,7 +79,7 @@ class TableScraper:
                 html = browser.page_source
                 logger.info("Berhasil ambil konten HTML")
                 
-                tables = pd.read_html(StringIO(html), encoding='utf-8')
+                tables = pd.read_html(StringIO(html))
                 return tables
                 
         except TimeoutException:
