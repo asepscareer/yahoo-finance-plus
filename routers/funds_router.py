@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def get_funds_service(request: Request):
     return FundsService(redis=request.app.state.redis)
 
-@router.post("/funds-data", summary="Get funds data for a given symbol", tags=["Holdings"])
+@router.post("/funds-data", summary="Get funds data for a given symbol", tags=["Holdings"], operation_id="get_funds_data")
 async def get_funds_data(req: GlobalRequest, svc: FundsService = Depends(get_funds_service)):
     logger.info(f"Getting funds data for symbol: {req.symbol}")
     response = await svc.get_funds_data(req.symbol)

@@ -11,14 +11,14 @@ logger = logging.getLogger(__name__)
 def get_dividends_splits_service(request: Request):
     return DividendsSplitsService(redis=request.app.state.redis)
 
-@router.post("/dividends", summary="Get dividend data for a given symbol", tags=["Stock"])
+@router.post("/dividends", summary="Get dividend data for a given symbol", tags=["Stock"], operation_id="get_dividends")
 async def get_dividends(req: GlobalRequest, svc: DividendsSplitsService = Depends(get_dividends_splits_service)):
     logger.info(f"Getting dividends for symbol: {req.symbol}")
     response = await svc.get_dividend_data(req.symbol)
     logger.info(f"Successfully retrieved dividends for symbol: {req.symbol}")
     return success(response)
 
-@router.post("/splits", summary="Get stock split data for a given symbol", tags=["Stock"])
+@router.post("/splits", summary="Get stock split data for a given symbol", tags=["Stock"], operation_id="get_splits")
 async def get_splits(req: GlobalRequest, svc: DividendsSplitsService = Depends(get_dividends_splits_service)):
     logger.info(f"Getting splits for symbol: {req.symbol}")
     response = await svc.get_splits(req.symbol)

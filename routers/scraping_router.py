@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 def get_scraping_service(request: Request):
     return ScrapingService(redis=request.app.state.redis)
 
-@router.post("/price-custom-date", summary="Get historical price data for a custom date range by scraping", tags=["Stock"])
+@router.post("/price-custom-date", summary="Get historical price data for a custom date range by scraping", tags=["Stock"], operation_id="price_custom_date")
 async def price_custom_date(req: PriceCustomRequest, svc: ScrapingService = Depends(get_scraping_service)):
     logger.info(f"Getting custom date price for symbol: {req.symbol} from {req.start} to {req.end}")
     response = await svc.pricecustomdate(req.symbol, req.start, req.end)
